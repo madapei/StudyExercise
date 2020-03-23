@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sleepHelper" class="com.mapei.javatest.test20190104.classfiyAopTest.SleetHelper" />
+
+    <bean id="human" class="com.mapei.javatest.test20190104.classfiyAopTest.Human" />
+
+    <bean id="sleepPointCut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+        <property name="pattern" value=".*sleep"/>
+    </bean>
+
+    <bean id="sleepHelperAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="sleepHelper" />
+        <property name="pointcut" ref="sleepPointCut" />
+    </bean>
+
+    <bean id="serviceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="human" />
+        <property name="interceptorNames" value="sleepHelperAdvisor" />
+        <property name="proxyInterfaces" value="com.mapei.javatest.test20190104.classfiyAopTest.Sleepable" />
+    </bean>
+</beans>
