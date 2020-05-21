@@ -20,6 +20,8 @@ public class ThreadPoolTest {
             String keyword = in.nextLine();
 
             ExecutorService pool = Executors.newCachedThreadPool();
+//            Executors.newFixedThreadPool(2);
+//            Executors.newSingleThreadExecutor();
             MatchCounter counter = new MatchCounter(new File(directory), keyword, pool);
             Future<Integer> result = pool.submit(counter);
 

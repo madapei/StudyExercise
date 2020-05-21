@@ -1,6 +1,6 @@
 package com.mapei.javatest.test_thread;
 
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class MainTest {
     public static void main(String[] args) {
-        LockTest test1 = new LockTest(200, 300);
+        /*LockTest test1 = new LockTest(200, 300);
         LockTest test2 = new LockTest(100, 200);
         Runnable r1 = () -> {
             test1.doSomething();
@@ -23,7 +23,13 @@ public class MainTest {
         Thread thread1 = new Thread(r1);
         Thread thread2 = new Thread(r2);
         thread1.start();
-        thread2.start();
+        thread2.start();*/
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+        LinkedList<Integer> linkedList = new LinkedList<>(list);
+        System.out.println(linkedList);
+        System.out.println(linkedList.element());
+        System.out.println(linkedList.peek());
+        System.out.println(linkedList);
     }
 }
 

@@ -17,7 +17,7 @@ import java.util.concurrent.locks.LockSupport;
  */
 public class ConcurrentHashMapTest {
     public static void main(String[] args) {
-        test4();
+        test5();
     }
 
     public static void test1(){
@@ -140,5 +140,13 @@ public class ConcurrentHashMapTest {
         System.out.println("after add list : " + map.toString());
         set.removeIf(k -> k.indexOf("pei") != -1);
         System.out.println("after remove if like pei : " + map.toString());
+    }
+
+    public static void test5(){
+        ConcurrentHashMap<String, Long> map = new ConcurrentHashMap<>();
+        map.put("a", 10L);
+        System.out.println(map.toString());
+        System.out.println(map.getOrDefault("b", 20L));
+        System.out.println(map.toString());
     }
 }
